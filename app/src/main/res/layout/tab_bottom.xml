@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="54dp"
+              android:background="@color/lightgray"
+              android:orientation="horizontal"
+    >
+
+    <!-- 底部栏 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0.5dp"
+        android:background="@color/tab_bottom_background"
+        android:orientation="horizontal">
+
+        <!-- 第一个 按钮 -->
+
+        <LinearLayout
+            android:id="@+id/ll_house_tab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="2dp">
+
+            <ImageView
+                android:id="@+id/iv_house_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:clickable="false"
+                android:src="@mipmap/tab_house_dark"/>
+
+            <TextView
+                android:id="@+id/tv_house_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/tv_house_tab"
+                android:textColor="@color/no_activation"
+                android:textSize="@dimen/text_05"/>
+        </LinearLayout>
+
+        <!-- 第二个 按钮 -->
+
+        <!-- 第三个 按钮 -->
+
+        <LinearLayout
+            android:id="@+id/ll_rent_tab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="2dp">
+
+            <ImageView
+                android:id="@+id/iv_rent_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:clickable="false"
+                android:src="@mipmap/tab_shouzu_dark"/>
+
+            <TextView
+                android:id="@+id/tv_rent_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/tv_rent_tab"
+                android:textColor="@color/no_activation"
+                android:textSize="@dimen/text_05"/>
+
+        </LinearLayout>
+
+        <!-- 第四个 按钮 -->
+
+        <LinearLayout
+            android:id="@+id/ll_me_tab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="2dp">
+
+            <ImageView
+                android:id="@+id/iv_me_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:clickable="false"
+                android:src="@mipmap/tab_me_dark"/>
+
+            <TextView
+                android:id="@+id/tv_me_tab"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/iv_me_tab"
+                android:textColor="@color/no_activation"
+                android:textSize="@dimen/text_05"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
