@@ -1,19 +1,15 @@
 package com.appnews.jjs.appnews.base;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import com.appnews.jjs.appnews.utils.SPreUtil;
+import com.android.baselibrary.activity.BaseActivity;
 
 /**
- * Created by 15596 on 2016/10/11.
+ * Created by 15596 on 2016/10/19.
  */
 
-public abstract class AppBaseActivity extends BaseActivity {
-    private SPreUtil mSPreUtil;
-    private Context mContext;
-
+public  abstract class AppBaseActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

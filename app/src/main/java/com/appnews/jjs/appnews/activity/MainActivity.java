@@ -15,12 +15,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.baselibrary.utils.SPreUtil;
 import com.appnews.jjs.appnews.R;
 import com.appnews.jjs.appnews.base.AppBaseActivity;
 import com.appnews.jjs.appnews.fragment.HomeFragment;
 import com.appnews.jjs.appnews.fragment.MyFragment;
 import com.appnews.jjs.appnews.fragment.NewsFragment;
-import com.appnews.jjs.appnews.utils.SPreUtil;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -63,51 +63,25 @@ public class MainActivity extends AppBaseActivity implements SwipeRefreshLayout.
     private NewsFragment mNewsFragment;
     private MyFragment mMyFragment;
 
+
+
     @Override
-    public int bindLayout() {
+    public int getLayoutResId() {
         return R.layout.acitvity_main_test;
     }
 
     @Override
-    public void createActivity(Bundle savedInstanceState) {
+    public void initView(Bundle savedInstanceState) {
+        super.initView(savedInstanceState);
         mSPreUtil = new SPreUtil(MainActivity.this, "SPreUtil");
         isLight = mSPreUtil.getBooleanValue("isLight", true);
-    }
 
-    @Override
-    public void initView() {
         defautFragment();
         initToolBar();
         initDrawerLayout();
         initSwipeRefresh();
     }
 
-    private void initSwipeRefresh() {
-
-        swipeRefresh.setColorSchemeColors(ContextCompat.getColor(MainActivity.this,android.R.color.holo_blue_bright),
-                ContextCompat.getColor(MainActivity.this,android.R.color.holo_green_light),
-                ContextCompat.getColor(MainActivity.this,android.R.color.holo_orange_light),
-                ContextCompat.getColor(MainActivity.this,android.R.color.holo_red_light)
-        );
-
-        swipeRefresh.setOnRefreshListener(this);
-
-    }
-    @Override
-    public void onRefresh() {
-        new Handler().postDelayed(new Runnable() {
-            @Override public void run() {
-                swipeRefresh.setRefreshing(false);
-            }
-        }, 2000);
-    }
-
-    private void initDrawerLayout() {
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(MainActivity.this,dlLayout,
-                toolbar,R.string.app_name,R.string.app_name);
-        dlLayout.setDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-    }
 
     private void initToolBar() {
         toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this, isLight ? R.color.light_toolbar : R.color.dark_toolbar));
@@ -116,19 +90,22 @@ public class MainActivity extends AppBaseActivity implements SwipeRefreshLayout.
     }
 
 
+    //给其他fragment 调用设置标题
     public void setToolBarTitle(String title) {
         toolbar.setTitle(title);
     }
+
+    //设置是否刷新供其它地方调用
+    public void setSwipeRefreshEnable(boolean enable){
+        swipeRefresh.setEnabled(enable);
+    }
+
+
 
 
     //进入默认页面
     private void defautFragment() {
         selectTab(0);
-    }
-
-    @Override
-    public void getData() {
-
     }
 
     @OnClick({R.id.ll_house_tab, R.id.ll_rent_tab, R.id.ll_me_tab})
@@ -150,7 +127,7 @@ public class MainActivity extends AppBaseActivity implements SwipeRefreshLayout.
     }
 
     private void selectTab(int i) {
-        FragmentManager  fm = getSupportFragmentManager();
+        FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction =  fm.beginTransaction();
 
         hideFragment(fragmentTransaction);
@@ -182,7 +159,7 @@ public class MainActivity extends AppBaseActivity implements SwipeRefreshLayout.
                     mMyFragment = new MyFragment();
                     fragmentTransaction.add(R.id.fl_content , mMyFragment);
                 }else {
-                   fragmentTransaction.show(mMyFragment);
+                    fragmentTransaction.show(mMyFragment);
                 }
 
                 ivMeTab.setImageResource(R.mipmap.tab_me);
@@ -209,6 +186,34 @@ public class MainActivity extends AppBaseActivity implements SwipeRefreshLayout.
 
     }
 
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                swipeRefresh.setRefreshing(false);
+            }
+        }, 2000);
+    }
+
+    private void initSwipeRefresh() {
+
+        swipeRefresh.setColorSchemeColors(ContextCompat.getColor(MainActivity.this,android.R.color.holo_blue_bright),
+                ContextCompat.getColor(MainActivity.this,android.R.color.holo_green_light),
+                ContextCompat.getColor(MainActivity.this,android.R.color.holo_orange_light),
+                ContextCompat.getColor(MainActivity.this,android.R.color.holo_red_light)
+        );
+
+        swipeRefresh.setOnRefreshListener(this);
+
+    }
+
+
+    private void initDrawerLayout() {
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(MainActivity.this,dlLayout,
+                toolbar,R.string.app_name,R.string.app_name);
+        dlLayout.setDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+    }
 
     /*重置颜色*/
     private void resetColor() {
@@ -221,7 +226,6 @@ public class MainActivity extends AppBaseActivity implements SwipeRefreshLayout.
         ivMeTab.setImageResource(R.mipmap.tab_me_dark);
         tvMeTab.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.no_activation));
     }
-
 
 
 }

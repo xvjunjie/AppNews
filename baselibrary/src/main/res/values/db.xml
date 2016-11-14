@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="DATABASE_INFO">
+        <item>Test.db</item>
+        <item>1</item>
+    </array>
+
+    <array name="CREATE_TABLE_SQL">
+        <item>CREATE TABLE user (id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,gender TEXT,age INTEGER)</item>
+    </array>
+
+    <array name="UPDATE_TABLE_SQL">
+        <item></item>
+    </array>
+</resources>

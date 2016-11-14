@@ -11,7 +11,7 @@
 
     <style name="item_margin" >
         <item name="android:layout_marginTop">@dimen/item_margin</item>
-        <!--<item name="android:layout_marginBottom">@dimen/item_margin</item>-->
+        <!--<item_home name="android:layout_marginBottom">@dimen/item_margin</item_home>-->
     </style>
 
     <style name="margin_left_right" >

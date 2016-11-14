@@ -1,9 +1,10 @@
 package com.appnews.jjs.appnews.activity;
 
+import com.android.baselibrary.activity.BaseSplashActivity;
 import com.appnews.jjs.appnews.R;
-import com.appnews.jjs.appnews.base.BaseSplashActivity;
 
 import java.util.List;
+
 
 /**
  * Created by 15596 on 2016/10/11.
