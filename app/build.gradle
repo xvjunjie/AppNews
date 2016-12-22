@@ -34,8 +34,9 @@ dependencies {
     //图片加载库
     compile 'com.squareup.picasso:picasso:2.5.2'
     //轮播图库
-    compile 'com.jude:rollviewpager:1.2.6'
+    compile 'com.jude:rollviewpager:1.4.5'
     //ListView
     compile 'com.liaoinstan.springview:library:1.2.6'
     compile project(':baselibrary')
+    compile 'com.android.support:design:24.2.1'
 }

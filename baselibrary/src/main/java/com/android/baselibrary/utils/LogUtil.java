@@ -4,7 +4,6 @@ import android.util.Log;
 
 /**
  * Log日志工具类
- * Created by Lichenwei
  * Date: 2015-12-12
  * Time: 23:21
  */
@@ -18,7 +17,7 @@ public class LogUtil
 	}
 
 	public static boolean isDebug = true;// 是否需要打印bug，可以在application的onCreate函数里面初始化
-	private static final String TAG = "fangku";
+	private static final String TAG = "JJ";
 
 	// 下面四个是默认tag的函数
 	public static void i(String msg)

@@ -15,4 +15,5 @@ public abstract class AppBaseAdapter<T> extends CommonAdapter<T> {
     public AppBaseAdapter(Context context, int layoutId, List<T> datas) {
         super(context, layoutId, datas);
     }
+
 }

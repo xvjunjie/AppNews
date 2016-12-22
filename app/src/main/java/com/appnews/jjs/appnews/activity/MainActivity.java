@@ -9,6 +9,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 import com.android.baselibrary.utils.SPreUtil;
 import com.appnews.jjs.appnews.R;
 import com.appnews.jjs.appnews.base.AppBaseActivity;
+import com.appnews.jjs.appnews.db.CacheDbHelper;
 import com.appnews.jjs.appnews.fragment.HomeFragment;
 import com.appnews.jjs.appnews.fragment.MyFragment;
 import com.appnews.jjs.appnews.fragment.NewsFragment;
@@ -75,6 +78,7 @@ public class MainActivity extends AppBaseActivity implements SwipeRefreshLayout.
         super.initView(savedInstanceState);
         mSPreUtil = new SPreUtil(MainActivity.this, "SPreUtil");
         isLight = mSPreUtil.getBooleanValue("isLight", true);
+        CacheDbHelper mCacheDbHelper = new CacheDbHelper(this,1);
 
         defautFragment();
         initToolBar();
@@ -85,7 +89,6 @@ public class MainActivity extends AppBaseActivity implements SwipeRefreshLayout.
 
     private void initToolBar() {
         toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this, isLight ? R.color.light_toolbar : R.color.dark_toolbar));
-//        setToolBarTitle("首页");
         setSupportActionBar(toolbar);
     }
 
@@ -99,6 +102,22 @@ public class MainActivity extends AppBaseActivity implements SwipeRefreshLayout.
     public void setSwipeRefreshEnable(boolean enable){
         swipeRefresh.setEnabled(enable);
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_main , menu);
+        menu.getItem(0).setTitle(mSPreUtil.getBooleanValue("isLight", true) ? "夜间模式" : "日间模式");
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
 
 
 

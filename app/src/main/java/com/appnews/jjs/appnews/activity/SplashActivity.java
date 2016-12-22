@@ -29,6 +29,6 @@ public class SplashActivity extends BaseSplashActivity {
 
     @Override
     protected Class<?> nextActivity() {
-        return MainActivity.class;
+        return HomeActivity.class;
     }
 }

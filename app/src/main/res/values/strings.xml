@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">AppNews</string>
+    <string name="app_name">JJS日报</string>
 
     <!--主页底部标签-->
     <string name="tv_house_tab">主页</string>
-    <string name="tv_rent_tab">待定</string>
+    <string name="tv_rent_tab">推荐</string>
     <string name="iv_me_tab">我的</string>
     <string name="home_mynews">我的新闻</string>
 
