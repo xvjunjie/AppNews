@@ -71,6 +71,7 @@ public class HomeFragment extends AppBaseFragment {
     private boolean isLoading = false;
     private BeforeBean mBeforeBean;
     private boolean isLight;
+    private List<TopStoriesBean> topStoriesList;
 
 
     @Override
@@ -117,6 +118,8 @@ public class HomeFragment extends AppBaseFragment {
                             mLatestNewsBean = mGson.fromJson(result,LatestNewsBean.class);
                             mDate = mLatestNewsBean.getDate();
 
+                            topStoriesList =  mLatestNewsBean.getTop_stories();
+
                             getTopDatas();
                             getHomeListDatas();
                             initSpringView();
@@ -156,6 +159,22 @@ public class HomeFragment extends AppBaseFragment {
         rollPagerView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
+                View view = getView();
+                int[] startingLocation = new int[2];
+                view.getLocationOnScreen(startingLocation);////获取在整个屏幕内的绝对坐标
+                startingLocation[0] += view.getWidth() / 2;
+
+                mTopStoriesBean = topStoriesList.get(position);
+                StoriesBean storiesBean = new StoriesBean();
+                storiesBean.setId(mTopStoriesBean.getId());
+                storiesBean.setTitle(mTopStoriesBean.getTitle());
+                Intent mIntent = new Intent(mActivity , LatestContentActivity.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putSerializable("storiesBean",storiesBean);
+                mBundle.putIntArray(Constants.START_LOCATION, startingLocation);
+                mIntent.putExtras(mBundle);
+                startActivity(mIntent);
+                mActivity.overridePendingTransition(0, 0);
 
             }
         });

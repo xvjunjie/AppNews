@@ -68,11 +68,19 @@ public class MenuFragment extends AppBaseFragment implements View.OnClickListene
         super.initData();
 
         initMenuListView();
+
+
     }
 
 
 
     private void initMenuListView() {
+       /* new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });*/
         mHttpUtil = new HttpUtil();
         mHttpUtil.doGet(Constants.THEMES, new JsonCallBack() {
             @Override
@@ -82,8 +90,11 @@ public class MenuFragment extends AppBaseFragment implements View.OnClickListene
                     mGson = new Gson();
                     mThemesBean = new ThemesBean();
                     mThemesBean = mGson.fromJson(result,ThemesBean.class);
-                    List<OthersBean> othersAllDatas = mThemesBean.getOthers();
-                    othersDatas.addAll(othersAllDatas);
+                  /*  List<OthersBean> othersAllDatas = mThemesBean.getOthers();
+                    othersDatas.addAll(othersAllDatas);*/
+                    othersDatas = mThemesBean.getOthers();
+
+                    initSpringView();
 
                 }else {
                     ToastUtil.showShortToast(mActivity,"数据不存在");
@@ -96,11 +107,15 @@ public class MenuFragment extends AppBaseFragment implements View.OnClickListene
             }
         });
 
+    }
+
+    private void initSpringView() {
 
         mAppBaseAdapter = new AppBaseAdapter<OthersBean>(mActivity ,R.layout.menu_item ,othersDatas ) {
             @Override
             protected void convert(ViewHolder viewHolder, OthersBean item, int position) {
-                viewHolder.setText(R.id.tv_item ,othersDatas.get(position).getName());
+                String data = item.getName();
+                viewHolder.setText(R.id.tv_item ,data);
             }
         };
 

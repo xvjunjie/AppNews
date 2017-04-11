@@ -120,13 +120,16 @@ public class MenuItemFragment extends AppBaseFragment {
 
                             List<StoriesBean> listAllStories = mThemeIdBean.getStories();
                             mListIdStories.addAll(listAllStories);//打个断点看看里面数值
-                            initListView();
 
                             topImg = mThemeIdBean.getImage();
                             String topTitle = mThemeIdBean.getDescription();
                             tv_title_hearder.setText(topTitle);
                             Picasso.with(mActivity).load(topImg).into(iv_title_hearder);
                             lvView.addHeaderView(hearder);
+
+                            initListView();
+
+
 
 
 
